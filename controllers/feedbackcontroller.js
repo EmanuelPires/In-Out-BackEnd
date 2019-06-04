@@ -28,6 +28,7 @@ module.exports = {
       // now we can assign alt text to the media, for use by screen readers and
       // other text-based presentations and interpreters
       var mediaIdStr = data.media_id_string;
+      console.log(mediaIdStr);
       var altText =
         "This is suposed to be a synth image that I'm tweetin from node.js";
       var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } };
