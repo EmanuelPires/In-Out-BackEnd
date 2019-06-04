@@ -20,8 +20,11 @@ module.exports = {
   },
   tweet: function(req, res) {
     console.log('Why is this not working');
-
-    console.log(req.body.data);
+    console.log('**********************************');
+    console.log(req.body.base64);
+    console.log('**********************************');
+    console.log(JSON.stringify(req.body));
+    console.log('**********************************');
     T.post('media/upload', { media_data: req.body.data }, function(
       err,
       data,
