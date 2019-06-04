@@ -6,7 +6,8 @@ var app = express();
 var routes = require('./routes');
 var port = process.env.PORT || 3000;
 
-app.use(bodyParser.json({ limit: '50mb', extended: true }));
+app.use(bodyParser({ limit: '50mb' }));
+// app.use(bodyParser.json({ limit: '50mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 if (process.env.NODE_ENV === 'production') {
