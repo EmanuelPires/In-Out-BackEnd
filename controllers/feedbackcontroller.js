@@ -21,7 +21,7 @@ module.exports = {
   tweet: function(req, res) {
     console.log('Why is this not working');
 
-    console.log('The Image object' + req.body);
+    console.log(req.body.data);
     T.post('media/upload', { media_data: req.body.data }, function(
       err,
       data,
