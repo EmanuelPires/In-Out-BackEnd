@@ -25,7 +25,7 @@ module.exports = {
     console.log('**********************************');
     // console.log(JSON.stringify(req.body));
     console.log('**********************************');
-    T.post('media/upload', { media_data: req.body.base64 }, function(
+    T.post('media/upload', { media_data: req.body }, function(
       err,
       data,
       response
@@ -34,6 +34,7 @@ module.exports = {
       // other text-based presentations and interpreters
       var mediaIdStr = data.media_id_string;
       console.log(data);
+      console.log(mediaIdStr);
       var altText =
         "This is suposed to be a synth image that I'm tweetin from node.js";
       var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } };
