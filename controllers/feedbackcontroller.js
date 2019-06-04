@@ -23,9 +23,9 @@ module.exports = {
     console.log('**********************************');
     console.log(req.body.base64);
     console.log('**********************************');
-    console.log(JSON.stringify(req.body));
+    // console.log(JSON.stringify(req.body));
     console.log('**********************************');
-    T.post('media/upload', { media_data: req.body.data }, function(
+    T.post('media/upload', { media_data: req.body.base64 }, function(
       err,
       data,
       response
@@ -33,7 +33,7 @@ module.exports = {
       // now we can assign alt text to the media, for use by screen readers and
       // other text-based presentations and interpreters
       var mediaIdStr = data.media_id_string;
-      console.log(mediaIdStr);
+      console.log(data);
       var altText =
         "This is suposed to be a synth image that I'm tweetin from node.js";
       var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } };
