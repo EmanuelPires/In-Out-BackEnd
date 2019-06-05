@@ -51,6 +51,7 @@ module.exports = {
 
       T.post('statuses/update', params, function(err, data, response) {
         console.log(data);
+        console.log('**********************************');
       });
 
       // T.post('media/metadata/create', meta_params, function(
