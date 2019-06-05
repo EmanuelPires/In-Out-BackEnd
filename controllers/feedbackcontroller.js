@@ -26,7 +26,7 @@ module.exports = {
     console.log(JSON.stringify(req.body));
     console.log('**********************************');
     var image = Object.keys(req.body)[0];
-    T.post('media/upload', { media_data: image }, function(
+    T.post('media/upload', { media_data: JSON.stringify(image) }, function(
       err,
       data,
       response
