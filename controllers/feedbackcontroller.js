@@ -43,23 +43,33 @@ module.exports = {
       var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } };
       console.log(meta_params);
       console.log('**********************************');
-      T.post('media/metadata/create', meta_params, function(
-        err,
-        data,
-        response
-      ) {
-        if (!err) {
-          // now we can reference the media and post a tweet (media will attach to the tweet)
-          var params = {
-            status: 'Tweeting and testing using Front  end',
-            media_ids: [mediaIdStr]
-          };
 
-          T.post('statuses/update', params, function(err, data, response) {
-            console.log(data);
-          });
-        }
+      var params = {
+        status: 'Tweeting and testing using Front  end',
+        media_ids: [mediaIdStr]
+      };
+
+      T.post('statuses/update', params, function(err, data, response) {
+        console.log(data);
       });
+
+      // T.post('media/metadata/create', meta_params, function(
+      //   err,
+      //   data,
+      //   response
+      // ) {
+      //   if (!err) {
+      //     // now we can reference the media and post a tweet (media will attach to the tweet)
+      //     var params = {
+      //       status: 'Tweeting and testing using Front  end',
+      //       media_ids: [mediaIdStr]
+      //     };
+
+      //     T.post('statuses/update', params, function(err, data, response) {
+      //       console.log(data);
+      //     });
+      //   }
+      // });
     });
   }
 };
