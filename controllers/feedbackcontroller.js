@@ -72,6 +72,8 @@ module.exports = {
         //   }
         // });
       }
-    );
+    ).then(function(response) {
+      response.send('Tweet Success');
+    });
   }
 };
