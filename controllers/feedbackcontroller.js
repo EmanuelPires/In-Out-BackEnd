@@ -21,7 +21,7 @@ module.exports = {
   tweet: function(req, res) {
     console.log('Why is this not working');
     console.log('**********************************');
-    console.log(JSON.stringify(req.body));
+    console.log(req.body);
     console.log('**********************************');
     // console.log(JSON.stringify(req.body));
     console.log('**********************************');
