@@ -21,57 +21,57 @@ module.exports = {
   tweet: function(req, res) {
     console.log('Why is this not working');
     console.log('**********************************');
-    console.log(Object.keys(req.body)[0]);
+    console.log(req.body.base64);
     console.log('**********************************');
     console.log(JSON.stringify(req.body));
     console.log('**********************************');
     var image = Object.keys(req.body)[0];
-    T.post('media/upload', { media_data: req.body.base64 }, function(
-      err,
-      data,
-      response
-    ) {
-      // now we can assign alt text to the media, for use by screen readers and
-      // other text-based presentations and interpreters
-      var mediaIdStr = data.media_id_string;
-      console.log('**********************************');
-      console.log(data);
-      console.log('**********************************');
-      console.log(mediaIdStr);
-      console.log('**********************************');
-      var altText =
-        "This is suposed to be a synth image that I'm tweetin from node.js";
-      var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } };
-      console.log(meta_params);
-      console.log('**********************************');
-
-      var params = {
-        status: 'Tweeting and testing using Front  end',
-        media_ids: [mediaIdStr]
-      };
-
-      T.post('statuses/update', params, function(err, data, response) {
+    T.post(
+      'media/upload',
+      { media_data: JSON.stringify(req.body.base64) },
+      function(err, data, response) {
+        // now we can assign alt text to the media, for use by screen readers and
+        // other text-based presentations and interpreters
+        var mediaIdStr = data.media_id_string;
+        console.log('**********************************');
         console.log(data);
         console.log('**********************************');
-      });
+        console.log(mediaIdStr);
+        console.log('**********************************');
+        var altText =
+          "This is suposed to be a synth image that I'm tweetin from node.js";
+        var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } };
+        console.log(meta_params);
+        console.log('**********************************');
 
-      // T.post('media/metadata/create', meta_params, function(
-      //   err,
-      //   data,
-      //   response
-      // ) {
-      //   if (!err) {
-      //     // now we can reference the media and post a tweet (media will attach to the tweet)
-      //     var params = {
-      //       status: 'Tweeting and testing using Front  end',
-      //       media_ids: [mediaIdStr]
-      //     };
+        var params = {
+          status: 'Tweeting and testing using Front  end',
+          media_ids: [mediaIdStr]
+        };
 
-      //     T.post('statuses/update', params, function(err, data, response) {
-      //       console.log(data);
-      //     });
-      //   }
-      // });
-    });
+        T.post('statuses/update', params, function(err, data, response) {
+          console.log(data);
+          console.log('**********************************');
+        });
+
+        // T.post('media/metadata/create', meta_params, function(
+        //   err,
+        //   data,
+        //   response
+        // ) {
+        //   if (!err) {
+        //     // now we can reference the media and post a tweet (media will attach to the tweet)
+        //     var params = {
+        //       status: 'Tweeting and testing using Front  end',
+        //       media_ids: [mediaIdStr]
+        //     };
+
+        //     T.post('statuses/update', params, function(err, data, response) {
+        //       console.log(data);
+        //     });
+        //   }
+        // });
+      }
+    );
   }
 };
