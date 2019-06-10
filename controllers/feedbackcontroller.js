@@ -45,7 +45,7 @@ module.exports = {
         console.log('**********************************');
 
         var params = {
-          status: 'Tweeting and testing using Front  end',
+          status: '#INOUTSPRINGFIELD',
           media_ids: [mediaIdStr]
         };
 
